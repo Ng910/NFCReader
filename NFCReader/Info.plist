@@ -20,17 +20,17 @@
 		</dict>
 	</dict>
 	<key>NFCReaderUsageDescription</key>
-	<string>Scan NFC tag</string>
+	<string>ICカードを読み取るために NFC を使用します</string>
+	<key>com.apple.developer.nfc.readersession.felica.systemcodes</key>
+	<array>
+		<string>003</string>
+	</array>
 	<key>com.apple.developer.nfc.readersession.iso7816.select-identifiers</key>
 	<array>
 		<string>D392F000260100000001</string>
 		<string>D3921000310001010408</string>
 		<string>D3921000310001010100</string>
 		<string>D3921000310001010401</string>
-	</array>
-	<key>com.apple.developer.nfc.readersession.felica.systemcodes</key>
-	<array>
-		<string>003</string>
 	</array>
 </dict>
 </plist>

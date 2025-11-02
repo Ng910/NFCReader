@@ -93,11 +93,15 @@ class MainViewController: UIViewController, NFCTagReaderSessionDelegate {
     }
 
     func tagReaderSessionDidBecomeActive(_ session: NFCTagReaderSession) {
+        print("tagReaderSessionDidBecomeActive(_:)")
     }
     
     func tagReaderSession(_ session: NFCTagReaderSession, didDetect tags: [NFCTag]) {
+        print("tagReaderSession(_:didDetect:)")
     }
     
     func tagReaderSession(_ session: NFCTagReaderSession, didInvalidateWithError error: Error) {
+        let readerError = error as! NFCReaderError
+        print(readerError.code, readerError.localizedDescription)
     }
 }
