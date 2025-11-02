@@ -11,7 +11,7 @@ import ComposableArchitecture
 struct Splash {
     @ObservableState
     struct State: Equatable {
-        
+        var mainState: Main.State? = nil
     }
     
     enum Action: Equatable {
@@ -23,6 +23,7 @@ struct Splash {
         }
         
         case view(ViewAction)
+        case mainAction(Main.Action)
     }
     
     var body: some Reducer<State, Action> {
@@ -30,7 +31,12 @@ struct Splash {
             switch action {
             case let .view(action):
                 return viewAction(state: &state, action: action)
+            case .mainAction:
+                return .none
             }
+        }
+        .ifLet(\.mainState, action: \.mainAction) {
+            Main()
         }
     }
     
@@ -39,6 +45,7 @@ struct Splash {
         case .onApear:
             return .none
         case .onLoad:
+            state.mainState = Main.State()
             return .none
         }
     }

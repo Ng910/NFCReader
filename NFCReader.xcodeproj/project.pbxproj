@@ -10,8 +10,6 @@
 		1192FA792EB749EB0046E5AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192FA6F2EB749EB0046E5AD /* AppDelegate.swift */; };
 		1192FA7A2EB749EB0046E5AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192FA762EB749EB0046E5AD /* SceneDelegate.swift */; };
 		1192FA7C2EB749EB0046E5AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1192FA702EB749EB0046E5AD /* Assets.xcassets */; };
-		1192FA7E2EB749EB0046E5AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1192FA732EB749EB0046E5AD /* LaunchScreen.storyboard */; };
-		1192FA7F2EB749EB0046E5AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1192FA752EB749EB0046E5AD /* Main.storyboard */; };
 		1192FA842EB74AB00046E5AD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192FA832EB74AA90046E5AD /* MainViewController.swift */; };
 		1192FA872EB74B780046E5AD /* FilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192FA862EB74B720046E5AD /* FilledButton.swift */; };
 		1192FA892EB74D6F0046E5AD /* SplashStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192FA882EB74D690046E5AD /* SplashStore.swift */; };
@@ -41,8 +39,6 @@
 		1192FA6F2EB749EB0046E5AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1192FA702EB749EB0046E5AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1192FA712EB749EB0046E5AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1192FA722EB749EB0046E5AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		1192FA742EB749EB0046E5AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1192FA762EB749EB0046E5AD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1192FA832EB74AA90046E5AD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1192FA862EB74B720046E5AD /* FilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledButton.swift; sourceTree = "<group>"; };
@@ -101,8 +97,6 @@
 				1192FA6F2EB749EB0046E5AD /* AppDelegate.swift */,
 				1192FA702EB749EB0046E5AD /* Assets.xcassets */,
 				1192FA712EB749EB0046E5AD /* Info.plist */,
-				1192FA732EB749EB0046E5AD /* LaunchScreen.storyboard */,
-				1192FA752EB749EB0046E5AD /* Main.storyboard */,
 				1192FA762EB749EB0046E5AD /* SceneDelegate.swift */,
 			);
 			path = NFCReader;
@@ -285,8 +279,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1192FA7C2EB749EB0046E5AD /* Assets.xcassets in Resources */,
-				1192FA7E2EB749EB0046E5AD /* LaunchScreen.storyboard in Resources */,
-				1192FA7F2EB749EB0046E5AD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,25 +342,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		1192FA732EB749EB0046E5AD /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1192FA722EB749EB0046E5AD /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		1192FA752EB749EB0046E5AD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1192FA742EB749EB0046E5AD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		11B63EB02EB743A500B94E41 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -382,9 +355,10 @@
 				INFOPLIST_FILE = NFCReader/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -414,9 +388,10 @@
 				INFOPLIST_FILE = NFCReader/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -563,7 +538,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VW645G4T43;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Takuto-Nagaoka.NFCReaderTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -585,7 +560,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VW645G4T43;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Takuto-Nagaoka.NFCReaderTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
