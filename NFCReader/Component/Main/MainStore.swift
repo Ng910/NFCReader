@@ -21,6 +21,7 @@ struct Main {
         enum ViewAction {
             case onApear
             case onLoad
+            case readButtonTapped
         }
         
         case view(ViewAction)
@@ -40,6 +41,8 @@ struct Main {
         case .onApear:
             return .none
         case .onLoad:
+            return .none
+        case .readButtonTapped:
             return .none
         }
     }

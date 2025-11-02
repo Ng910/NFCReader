@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11364DFC2EB79FAA00E7FAFE /* Anchorage in Frameworks */ = {isa = PBXBuildFile; productRef = 11364DFB2EB79FAA00E7FAFE /* Anchorage */; };
+		11364DFF2EB7A78B00E7FAFE /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 11364DFE2EB7A78B00E7FAFE /* CombineCocoa */; };
 		1192FA792EB749EB0046E5AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192FA6F2EB749EB0046E5AD /* AppDelegate.swift */; };
 		1192FA7A2EB749EB0046E5AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192FA762EB749EB0046E5AD /* SceneDelegate.swift */; };
 		1192FA7C2EB749EB0046E5AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1192FA702EB749EB0046E5AD /* Assets.xcassets */; };
@@ -69,6 +71,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1192FA8E2EB77B350046E5AD /* ComposableArchitecture in Frameworks */,
+				11364DFF2EB7A78B00E7FAFE /* CombineCocoa in Frameworks */,
+				11364DFC2EB79FAA00E7FAFE /* Anchorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,6 +179,8 @@
 			name = NFCReader;
 			packageProductDependencies = (
 				1192FA8D2EB77B350046E5AD /* ComposableArchitecture */,
+				11364DFB2EB79FAA00E7FAFE /* Anchorage */,
+				11364DFE2EB7A78B00E7FAFE /* CombineCocoa */,
 			);
 			productName = NFCReader;
 			productReference = 11B63E862EB743A400B94E41 /* NFCReader.app */;
@@ -260,6 +266,8 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				1192FA8C2EB77B350046E5AD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				11364DFA2EB79FAA00E7FAFE /* XCRemoteSwiftPackageReference "Anchorage" */,
+				11364DFD2EB7A78B00E7FAFE /* XCRemoteSwiftPackageReference "CombineCocoa" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 11B63E872EB743A400B94E41 /* Products */;
@@ -656,6 +664,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		11364DFA2EB79FAA00E7FAFE /* XCRemoteSwiftPackageReference "Anchorage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Rightpoint/Anchorage.git";
+			requirement = {
+				kind = exactVersion;
+				version = 4.5.0;
+			};
+		};
+		11364DFD2EB7A78B00E7FAFE /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.1;
+			};
+		};
 		1192FA8C2EB77B350046E5AD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
@@ -667,6 +691,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		11364DFB2EB79FAA00E7FAFE /* Anchorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11364DFA2EB79FAA00E7FAFE /* XCRemoteSwiftPackageReference "Anchorage" */;
+			productName = Anchorage;
+		};
+		11364DFE2EB7A78B00E7FAFE /* CombineCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 11364DFD2EB7A78B00E7FAFE /* XCRemoteSwiftPackageReference "CombineCocoa" */;
+			productName = CombineCocoa;
+		};
 		1192FA8D2EB77B350046E5AD /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 1192FA8C2EB77B350046E5AD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
