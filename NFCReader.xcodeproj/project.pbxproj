@@ -13,6 +13,11 @@
 		1192FA7C2EB749EB0046E5AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1192FA702EB749EB0046E5AD /* Assets.xcassets */; };
 		1192FA7E2EB749EB0046E5AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1192FA732EB749EB0046E5AD /* LaunchScreen.storyboard */; };
 		1192FA7F2EB749EB0046E5AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1192FA752EB749EB0046E5AD /* Main.storyboard */; };
+		1192FA842EB74AB00046E5AD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192FA832EB74AA90046E5AD /* MainViewController.swift */; };
+		1192FA872EB74B780046E5AD /* FilledButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192FA862EB74B720046E5AD /* FilledButton.swift */; };
+		1192FA892EB74D6F0046E5AD /* SplashStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192FA882EB74D690046E5AD /* SplashStore.swift */; };
+		1192FA8B2EB74D770046E5AD /* MainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192FA8A2EB74D750046E5AD /* MainStore.swift */; };
+		1192FA8E2EB77B350046E5AD /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 1192FA8D2EB77B350046E5AD /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +45,10 @@
 		1192FA742EB749EB0046E5AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1192FA762EB749EB0046E5AD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1192FA772EB749EB0046E5AD /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		1192FA832EB74AA90046E5AD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		1192FA862EB74B720046E5AD /* FilledButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledButton.swift; sourceTree = "<group>"; };
+		1192FA882EB74D690046E5AD /* SplashStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashStore.swift; sourceTree = "<group>"; };
+		1192FA8A2EB74D750046E5AD /* MainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStore.swift; sourceTree = "<group>"; };
 		11B63E862EB743A400B94E41 /* NFCReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NFCReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11B63E9C2EB743A500B94E41 /* NFCReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NFCReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11B63EA62EB743A500B94E41 /* NFCReaderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NFCReaderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1192FA8E2EB77B350046E5AD /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				1192FA802EB749EE0046E5AD /* Component */,
+				1192FA852EB74B550046E5AD /* UIParts */,
 				1192FA6F2EB749EB0046E5AD /* AppDelegate.swift */,
 				1192FA702EB749EB0046E5AD /* Assets.xcassets */,
 				1192FA712EB749EB0046E5AD /* Info.plist */,
@@ -101,7 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				1192FA812EB74A000046E5AD /* Splash */,
-				1192FA772EB749EB0046E5AD /* SplashViewController.swift */,
+				1192FA822EB74A970046E5AD /* Main */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -109,8 +120,27 @@
 		1192FA812EB74A000046E5AD /* Splash */ = {
 			isa = PBXGroup;
 			children = (
+				1192FA882EB74D690046E5AD /* SplashStore.swift */,
+				1192FA772EB749EB0046E5AD /* SplashViewController.swift */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		1192FA822EB74A970046E5AD /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				1192FA8A2EB74D750046E5AD /* MainStore.swift */,
+				1192FA832EB74AA90046E5AD /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		1192FA852EB74B550046E5AD /* UIParts */ = {
+			isa = PBXGroup;
+			children = (
+				1192FA862EB74B720046E5AD /* FilledButton.swift */,
+			);
+			path = UIParts;
 			sourceTree = "<group>";
 		};
 		11B63E7D2EB743A400B94E41 = {
@@ -150,6 +180,7 @@
 			);
 			name = NFCReader;
 			packageProductDependencies = (
+				1192FA8D2EB77B350046E5AD /* ComposableArchitecture */,
 			);
 			productName = NFCReader;
 			productReference = 11B63E862EB743A400B94E41 /* NFCReader.app */;
@@ -233,6 +264,9 @@
 			);
 			mainGroup = 11B63E7D2EB743A400B94E41;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1192FA8C2EB77B350046E5AD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 11B63E872EB743A400B94E41 /* Products */;
 			projectDirPath = "";
@@ -277,9 +311,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1192FA892EB74D6F0046E5AD /* SplashStore.swift in Sources */,
 				1192FA792EB749EB0046E5AD /* AppDelegate.swift in Sources */,
+				1192FA872EB74B780046E5AD /* FilledButton.swift in Sources */,
+				1192FA8B2EB74D770046E5AD /* MainStore.swift in Sources */,
 				1192FA7A2EB749EB0046E5AD /* SceneDelegate.swift in Sources */,
 				1192FA7B2EB749EB0046E5AD /* SplashViewController.swift in Sources */,
+				1192FA842EB74AB00046E5AD /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -641,6 +679,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1192FA8C2EB77B350046E5AD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = exactVersion;
+				version = 1.23.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1192FA8D2EB77B350046E5AD /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1192FA8C2EB77B350046E5AD /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 11B63E7E2EB743A400B94E41 /* Project object */;
 }
