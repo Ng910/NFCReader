@@ -25,6 +25,7 @@ class MainViewController: UIViewController, NFCTagReaderSessionDelegate {
         label.font = .systemFont(ofSize: 24, weight: .bold)
         label.numberOfLines = 0
         label.textAlignment = .left
+        label.textColor = .black
         return label
     }()
     
