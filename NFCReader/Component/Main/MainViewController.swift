@@ -20,9 +20,18 @@ class MainViewController: UIViewController {
     
     let titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "NFC Reader"
-        label.textAlignment = .center
+        label.text = "ICカードを読み取ってください"
+        label.font = .systemFont(ofSize: 24, weight: .bold)
+        label.numberOfLines = 0
+        label.textAlignment = .left
         return label
+    }()
+    
+    let guideImage: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFit
+        image.image = UIImage(named: "NFCReader")
+        return image
     }()
     
     let readButton: UIButton = {
@@ -57,8 +66,13 @@ class MainViewController: UIViewController {
         titleLabel.leftAnchor == view.leftAnchor + 24
         titleLabel.rightAnchor == view.rightAnchor - 24
         
+        view.addSubview(guideImage)
+        guideImage.topAnchor == titleLabel.bottomAnchor + 32
+        guideImage.leftAnchor == view.leftAnchor + 24
+        guideImage.rightAnchor == view.rightAnchor - 24
+        
         view.addSubview(readButton)
-        readButton.topAnchor >= titleLabel.bottomAnchor + 32
+        readButton.topAnchor >= guideImage.bottomAnchor + 32
         readButton.leftAnchor == view.leftAnchor + 24
         readButton.rightAnchor == view.rightAnchor - 24
         readButton.bottomAnchor == view.safeAreaLayoutGuide.bottomAnchor - 20
