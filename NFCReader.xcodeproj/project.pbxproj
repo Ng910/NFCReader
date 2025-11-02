@@ -125,9 +125,9 @@
 				1192FA802EB749EE0046E5AD /* Component */,
 				1192FA852EB74B550046E5AD /* UIParts */,
 				1192FA6F2EB749EB0046E5AD /* AppDelegate.swift */,
+				1192FA762EB749EB0046E5AD /* SceneDelegate.swift */,
 				1192FA702EB749EB0046E5AD /* Assets.xcassets */,
 				1192FA712EB749EB0046E5AD /* Info.plist */,
-				1192FA762EB749EB0046E5AD /* SceneDelegate.swift */,
 			);
 			path = NFCReader;
 			sourceTree = "<group>";
