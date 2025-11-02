@@ -10,8 +10,9 @@ import ComposableArchitecture
 import Combine
 import Anchorage
 import CombineCocoa
+import CoreNFC
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, NFCTagReaderSessionDelegate {
 
     // MARK: - TCA
     private let store: StoreOf<Main>
@@ -84,9 +85,18 @@ class MainViewController: UIViewController {
         readButton
             .tapPublisher
             .sink { [weak self] _ in
-                self?.viewStore.send(.view(.readButtonTapped))
+                guard let self else { return }
+                self.viewStore.send(.view(.readButtonTapped(self)))
             }
             .store(in: &cancellables)
     }
 
+    func tagReaderSessionDidBecomeActive(_ session: NFCTagReaderSession) {
+    }
+    
+    func tagReaderSession(_ session: NFCTagReaderSession, didDetect tags: [NFCTag]) {
+    }
+    
+    func tagReaderSession(_ session: NFCTagReaderSession, didInvalidateWithError error: Error) {
+    }
 }

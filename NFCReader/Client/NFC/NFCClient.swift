@@ -6,13 +6,14 @@
 //
 
 import Dependencies
+import CoreNFC
 
 struct NFCClient {
-    var NFCSessionStart: () -> Void = { }
+    var NFCSessionStart: ( _ delegate: NFCTagReaderSessionDelegate) -> Void = { delegate in }
 }
 
 extension DependencyValues {
-    var lureClient: NFCClient {
+    var nfcClient: NFCClient {
         get { self[NFCClient.self] }
         set { self[NFCClient.self] = newValue }
       }

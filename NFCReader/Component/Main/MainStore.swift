@@ -7,6 +7,8 @@
 
 import UIKit
 import ComposableArchitecture
+import Dependencies
+import CoreNFC
 
 @Reducer
 struct Main {
@@ -15,17 +17,19 @@ struct Main {
         
     }
     
-    enum Action: Equatable {
-        
+    enum Action {
         @CasePathable
         enum ViewAction {
             case onApear
             case onLoad
-            case readButtonTapped
+            case readButtonTapped(NFCTagReaderSessionDelegate)
         }
         
         case view(ViewAction)
     }
+    
+    @Dependency(\.nfcClient)
+    var nfcClient: NFCClient
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
@@ -42,8 +46,10 @@ struct Main {
             return .none
         case .onLoad:
             return .none
-        case .readButtonTapped:
-            return .none
+        case let .readButtonTapped(delegate):
+            return .run { _ in
+                await nfcClient.NFCSessionStart(delegate)
+            }
         }
     }
 }

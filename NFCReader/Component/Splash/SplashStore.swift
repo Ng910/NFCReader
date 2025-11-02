@@ -14,7 +14,7 @@ struct Splash {
         var mainState: Main.State? = nil
     }
     
-    enum Action: Equatable {
+    enum Action {
         
         @CasePathable
         enum ViewAction {

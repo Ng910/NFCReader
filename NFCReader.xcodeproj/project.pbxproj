@@ -44,7 +44,6 @@
 		11364E002EB7AA0400E7FAFE /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		11364E042EB7B15000E7FAFE /* NFCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCClient.swift; sourceTree = "<group>"; };
 		11364E062EB7B15B00E7FAFE /* NFCClientLiveKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCClientLiveKey.swift; sourceTree = "<group>"; };
-		11364E082EB7B2C800E7FAFE /* NFCReader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NFCReader.entitlements; sourceTree = "<group>"; };
 		1192FA6F2EB749EB0046E5AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1192FA702EB749EB0046E5AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1192FA712EB749EB0046E5AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -120,7 +119,6 @@
 		1192FA782EB749EB0046E5AD /* NFCReader */ = {
 			isa = PBXGroup;
 			children = (
-				11364E082EB7B2C800E7FAFE /* NFCReader.entitlements */,
 				11364E022EB7B12B00E7FAFE /* Client */,
 				1192FA802EB749EE0046E5AD /* Component */,
 				1192FA852EB74B550046E5AD /* UIParts */,
