@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		11364DFC2EB79FAA00E7FAFE /* Anchorage in Frameworks */ = {isa = PBXBuildFile; productRef = 11364DFB2EB79FAA00E7FAFE /* Anchorage */; };
 		11364DFF2EB7A78B00E7FAFE /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 11364DFE2EB7A78B00E7FAFE /* CombineCocoa */; };
+		11364E012EB7AA1000E7FAFE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11364E002EB7AA0400E7FAFE /* UIColor+Extension.swift */; };
 		1192FA792EB749EB0046E5AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192FA6F2EB749EB0046E5AD /* AppDelegate.swift */; };
 		1192FA7A2EB749EB0046E5AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192FA762EB749EB0046E5AD /* SceneDelegate.swift */; };
 		1192FA7C2EB749EB0046E5AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1192FA702EB749EB0046E5AD /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11364E002EB7AA0400E7FAFE /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		1192FA6F2EB749EB0046E5AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1192FA702EB749EB0046E5AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1192FA712EB749EB0046E5AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		1192FA852EB74B550046E5AD /* UIParts */ = {
 			isa = PBXGroup;
 			children = (
+				11364E002EB7AA0400E7FAFE /* UIColor+Extension.swift */,
 				1192FA862EB74B720046E5AD /* FilledButton.swift */,
 			);
 			path = UIParts;
@@ -318,6 +321,7 @@
 				1192FA7A2EB749EB0046E5AD /* SceneDelegate.swift in Sources */,
 				1192FA842EB74AB00046E5AD /* MainViewController.swift in Sources */,
 				1192FA902EB7829F0046E5AD /* SplashViewController.swift in Sources */,
+				11364E012EB7AA1000E7FAFE /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

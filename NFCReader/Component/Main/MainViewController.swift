@@ -8,8 +8,8 @@
 import UIKit
 import ComposableArchitecture
 import Combine
-import CombineCocoa
 import Anchorage
+import CombineCocoa
 
 class MainViewController: UIViewController {
 
@@ -29,7 +29,7 @@ class MainViewController: UIViewController {
         let button = UIButton()
         button.setTitle("読み取る", for: .normal)
         button.layer.cornerRadius = 8
-        button.backgroundColor = .blue
+        button.backgroundColor = UIColor.buttonColor
         return button
     }()
     
