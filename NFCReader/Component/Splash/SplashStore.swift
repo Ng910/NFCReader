@@ -20,6 +20,7 @@ struct Splash {
         enum ViewAction {
             case onApear
             case onLoad
+            case showMain
         }
         
         case view(ViewAction)
@@ -45,6 +46,11 @@ struct Splash {
         case .onApear:
             return .none
         case .onLoad:
+            return .run { send in
+                try await Task.sleep(nanoseconds: 1_500_000_000)
+                await send(.view(.showMain))
+            }
+        case .showMain:
             state.mainState = Main.State()
             return .none
         }

@@ -43,6 +43,8 @@ class SplashViewController: UIViewController {
     
     private func setupLayout() {
         view.addSubview(splashImageView)
+        view.backgroundColor = .white
+        
         splashImageView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
@@ -54,7 +56,33 @@ class SplashViewController: UIViewController {
     }
 
     private func setupBinding() {
-        
+        viewStore.publisher.mainState
+            .compactMap { $0 }
+            .sink { [weak self] _ in
+                self?.showMainScreen()
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func showMainScreen() {
+        let mainStore = store.scope(
+            state: \.mainState!,
+            action: Splash.Action.mainAction
+        )
+        let mainVC = MainViewController(store: mainStore)
+
+        // フェードで重ねる形で表示
+        mainVC.modalPresentationStyle = .overFullScreen
+        mainVC.view.backgroundColor = .white
+
+        UIView.transition(
+            with: self.view.window ?? self.view,
+            duration: 0.5,
+            options: .transitionCrossDissolve,
+            animations: {
+                self.present(mainVC, animated: false)
+            }
+        )
     }
 }
 
