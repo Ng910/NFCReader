@@ -10,6 +10,7 @@ import CoreNFC
 
 struct NFCClient {
     var NFCSessionStart: ( _ delegate: NFCTagReaderSessionDelegate) -> Void = { delegate in }
+    var NFCSessionReaded: ( _ session: NFCTagReaderSession, _ tags: [NFCTag] ) -> Void = { session, tags in }
 }
 
 extension DependencyValues {

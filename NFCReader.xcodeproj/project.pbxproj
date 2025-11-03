@@ -21,6 +21,7 @@
 		1192FA8B2EB74D770046E5AD /* MainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192FA8A2EB74D750046E5AD /* MainStore.swift */; };
 		1192FA8E2EB77B350046E5AD /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 1192FA8D2EB77B350046E5AD /* ComposableArchitecture */; };
 		1192FA902EB7829F0046E5AD /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192FA8F2EB7829F0046E5AD /* SplashViewController.swift */; };
+		11E9862C2EB86B71005157E4 /* Felica.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9862B2EB86B66005157E4 /* Felica.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		11B63E9C2EB743A500B94E41 /* NFCReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NFCReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11B63EA62EB743A500B94E41 /* NFCReaderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NFCReaderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11E986292EB86915005157E4 /* NFCReaderDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NFCReaderDebug.entitlements; sourceTree = "<group>"; };
+		11E9862B2EB86B66005157E4 /* Felica.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Felica.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -120,7 +122,7 @@
 		1192FA782EB749EB0046E5AD /* NFCReader */ = {
 			isa = PBXGroup;
 			children = (
-				11E986292EB86915005157E4 /* NFCReaderDebug.entitlements */,
+				11E9862A2EB86B5A005157E4 /* Model */,
 				11364E022EB7B12B00E7FAFE /* Client */,
 				1192FA802EB749EE0046E5AD /* Component */,
 				1192FA852EB74B550046E5AD /* UIParts */,
@@ -128,6 +130,7 @@
 				1192FA762EB749EB0046E5AD /* SceneDelegate.swift */,
 				1192FA702EB749EB0046E5AD /* Assets.xcassets */,
 				1192FA712EB749EB0046E5AD /* Info.plist */,
+				11E986292EB86915005157E4 /* NFCReaderDebug.entitlements */,
 			);
 			path = NFCReader;
 			sourceTree = "<group>";
@@ -186,6 +189,14 @@
 				11B63EA62EB743A500B94E41 /* NFCReaderUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		11E9862A2EB86B5A005157E4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				11E9862B2EB86B66005157E4 /* Felica.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +354,7 @@
 				1192FA792EB749EB0046E5AD /* AppDelegate.swift in Sources */,
 				1192FA872EB74B780046E5AD /* FilledButton.swift in Sources */,
 				11364E052EB7B15700E7FAFE /* NFCClient.swift in Sources */,
+				11E9862C2EB86B71005157E4 /* Felica.swift in Sources */,
 				1192FA8B2EB74D770046E5AD /* MainStore.swift in Sources */,
 				1192FA7A2EB749EB0046E5AD /* SceneDelegate.swift in Sources */,
 				1192FA842EB74AB00046E5AD /* MainViewController.swift in Sources */,

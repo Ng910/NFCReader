@@ -23,6 +23,7 @@ struct Main {
             case onApear
             case onLoad
             case readButtonTapped(NFCTagReaderSessionDelegate)
+            case readSuccess(NFCTagReaderSession, [NFCTag])
         }
         
         case view(ViewAction)
@@ -49,6 +50,10 @@ struct Main {
         case let .readButtonTapped(delegate):
             return .run { _ in
                 await nfcClient.NFCSessionStart(delegate)
+            }
+        case let .readSuccess(session, tags):
+            return .run { _ in
+                await nfcClient.NFCSessionReaded(session, tags)
             }
         }
     }

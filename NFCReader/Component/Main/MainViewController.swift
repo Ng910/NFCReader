@@ -98,6 +98,9 @@ class MainViewController: UIViewController, NFCTagReaderSessionDelegate {
     
     func tagReaderSession(_ session: NFCTagReaderSession, didDetect tags: [NFCTag]) {
         print("tagReaderSession(_:didDetect:)")
+        DispatchQueue.main.async {
+            self.viewStore.send(.view(.readSuccess(session, tags)))
+        }
     }
     
     func tagReaderSession(_ session: NFCTagReaderSession, didInvalidateWithError error: Error) {
