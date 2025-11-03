@@ -13,6 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var splashOverlay: UIView?
+    var isHiddenSplashOverlay: Bool = false
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -44,12 +45,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
         splashOverlay?.removeFromSuperview()
         splashOverlay = nil
+        isHiddenSplashOverlay = false
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
         // Called when the scene will move from an active state to an inactive state.
         // This may occur due to temporary interruptions (ex. an incoming phone call).
         guard let window = window else { return }
+        guard !isHiddenSplashOverlay else { return }
             
         if splashOverlay == nil {
             let overlay = SplashViewController(store: Store(initialState: Splash.State(), reducer: Splash.init))
@@ -72,7 +75,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
+    
+    func hiddnSplashOverlay() {
+        isHiddenSplashOverlay = true
+    }
 }
 
