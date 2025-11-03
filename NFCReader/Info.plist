@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NFCReaderUsageDescription</key>
+	<string>ICカードやFeliCaタグの情報を読み取るためにNFCを使用します。</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -19,18 +21,10 @@
 			</array>
 		</dict>
 	</dict>
-	<key>NFCReaderUsageDescription</key>
-	<string>ICカードを読み取るために NFC を使用します</string>
 	<key>com.apple.developer.nfc.readersession.felica.systemcodes</key>
 	<array>
-		<string>003</string>
-	</array>
-	<key>com.apple.developer.nfc.readersession.iso7816.select-identifiers</key>
-	<array>
-		<string>D392F000260100000001</string>
-		<string>D3921000310001010408</string>
-		<string>D3921000310001010100</string>
-		<string>D3921000310001010401</string>
+		<string>0003</string>
+		<string>FE00</string>
 	</array>
 </dict>
 </plist>
