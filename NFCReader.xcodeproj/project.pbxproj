@@ -21,6 +21,8 @@
 		1192FA8B2EB74D770046E5AD /* MainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192FA8A2EB74D750046E5AD /* MainStore.swift */; };
 		1192FA8E2EB77B350046E5AD /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 1192FA8D2EB77B350046E5AD /* ComposableArchitecture */; };
 		1192FA902EB7829F0046E5AD /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192FA8F2EB7829F0046E5AD /* SplashViewController.swift */; };
+		11A910122EC372FB00BBB853 /* NewRelic.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11A9100F2EC372D800BBB853 /* NewRelic.xcframework */; };
+		11A910132EC372FB00BBB853 /* NewRelic.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 11A9100F2EC372D800BBB853 /* NewRelic.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		11E9862C2EB86B71005157E4 /* Felica.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E9862B2EB86B66005157E4 /* Felica.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		11A910142EC372FB00BBB853 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				11A910132EC372FB00BBB853 /* NewRelic.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		11364E002EB7AA0400E7FAFE /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		11364E042EB7B15000E7FAFE /* NFCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCClient.swift; sourceTree = "<group>"; };
@@ -54,6 +70,7 @@
 		1192FA882EB74D690046E5AD /* SplashStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashStore.swift; sourceTree = "<group>"; };
 		1192FA8A2EB74D750046E5AD /* MainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStore.swift; sourceTree = "<group>"; };
 		1192FA8F2EB7829F0046E5AD /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		11A9100F2EC372D800BBB853 /* NewRelic.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:SU7SUNGZJP:New Relic Inc"; lastKnownFileType = wrapper.xcframework; path = NewRelic.xcframework; sourceTree = "<group>"; };
 		11B63E862EB743A400B94E41 /* NFCReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NFCReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11B63E9C2EB743A500B94E41 /* NFCReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NFCReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		11B63EA62EB743A500B94E41 /* NFCReaderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NFCReaderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11A910122EC372FB00BBB853 /* NewRelic.xcframework in Frameworks */,
 				1192FA8E2EB77B350046E5AD /* ComposableArchitecture in Frameworks */,
 				11364DFF2EB7A78B00E7FAFE /* CombineCocoa in Frameworks */,
 				11364DFC2EB79FAA00E7FAFE /* Anchorage in Frameworks */,
@@ -171,12 +189,21 @@
 			path = UIParts;
 			sourceTree = "<group>";
 		};
+		11A910112EC372E200BBB853 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				11A9100F2EC372D800BBB853 /* NewRelic.xcframework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 		11B63E7D2EB743A400B94E41 = {
 			isa = PBXGroup;
 			children = (
 				1192FA782EB749EB0046E5AD /* NFCReader */,
 				11B63E9F2EB743A500B94E41 /* NFCReaderTests */,
 				11B63EA92EB743A500B94E41 /* NFCReaderUITests */,
+				11A910112EC372E200BBB853 /* Frameworks */,
 				11B63E872EB743A400B94E41 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -209,6 +236,7 @@
 				11B63E822EB743A400B94E41 /* Sources */,
 				11B63E832EB743A400B94E41 /* Frameworks */,
 				11B63E842EB743A400B94E41 /* Resources */,
+				11A910142EC372FB00BBB853 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
