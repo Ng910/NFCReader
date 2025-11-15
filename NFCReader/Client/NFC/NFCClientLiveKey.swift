@@ -26,7 +26,7 @@ extension NFCClient: DependencyKey {
                 }
                 
                 guard case NFCTag.feliCa(let feliCaTag) = tag else {
-                    session.invalidate(errorMessage: "FeliCa ではない")
+                    session.invalidate(errorMessage: "読み取りできないカードです")
                     return
                 }
                 
@@ -56,9 +56,20 @@ extension NFCClient: DependencyKey {
                         return
                     }
                     
+                    blockData.forEach { data in
+                        print("年: ", Int(data[4] >> 1) + 2000)
+                        print("月: ", ((data[4] & 1) == 1 ? 8 : 0) + Int(data[5] >> 5))
+                        print("日: ", Int(data[5] & 0x1f))
+                        print("入場駅コード: ", data[6...7].map { String(format: "%02x", $0) }.joined())
+                        print("出場駅コード: ", data[8...9].map { String(format: "%02x", $0) }.joined())
+                        print("入場地域コード: ", String(Int(data[15] >> 6), radix: 16))
+                        print("出場地域コード: ", String(Int((data[15] & 0x30) >> 4), radix: 16))
+                        print("残高: ", Int(data[10]) + Int(data[11]) << 8)
+                    }
+                    
                     let data = blockData.first!
                     let balance = data.toIntReversed(11, 12)
-                    
+
                     print(data as NSData)
                     print("残高: ¥\(balance)")
                     session.alertMessage = "残高: ¥\(balance)"
