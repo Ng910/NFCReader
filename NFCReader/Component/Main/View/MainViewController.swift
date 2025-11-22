@@ -86,9 +86,11 @@ class MainViewController: UIViewController, NFCTagReaderSessionDelegate {
         
         view.addSubview(tableView)
         tableView.topAnchor == titleLabel.bottomAnchor + 32
-        tableView.leftAnchor == view.leftAnchor + 0
-        tableView.rightAnchor == view.rightAnchor + 0
+        tableView.leftAnchor == view.leftAnchor
+        tableView.rightAnchor == view.rightAnchor
         tableView.bottomAnchor == readButton.topAnchor - 20
+        
+        tableView.isHidden = true
     }
 
     private func setupBinding() {
@@ -105,8 +107,19 @@ class MainViewController: UIViewController, NFCTagReaderSessionDelegate {
         viewStore.publisher
             .map(\.felica)
             .removeDuplicates()
-            .sink { [weak self] _ in
-                self?.tableView.reloadData()
+            .sink { [weak self] felica in
+                guard let self = self else { return }
+
+                if let felica = felica, !felica.historys.isEmpty {
+                    // データあり → tableView を表示、guideImage を非表示
+                    self.tableView.isHidden = false
+                    self.guideImage.isHidden = true
+                    self.tableView.reloadData()
+                } else {
+                    // データなし → tableView 非表示、guideImage を表示
+                    self.tableView.isHidden = true
+                    self.guideImage.isHidden = false
+                }
             }
             .store(in: &cancellables)
     }
