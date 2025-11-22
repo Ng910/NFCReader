@@ -14,7 +14,7 @@ import CoreNFC
 struct Main {
     @ObservableState
     struct State: Equatable {
-        
+        var felica: Felica? = nil
     }
     
     enum Action {
@@ -39,7 +39,8 @@ struct Main {
                 return viewAction(state: &state, action: action)
                 
             case let .readFelicaResult(.success(result)):
-                print(result)
+                state.felica = result
+                print(state.felica ?? "nil")
                 return .none
                 
             case .readFelicaResult(.failure):

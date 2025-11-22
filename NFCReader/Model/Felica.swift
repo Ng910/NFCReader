@@ -5,10 +5,10 @@
 //  Created by 長岡巧敏 on 2025/11/03.
 //
 
-struct Felica{
+struct Felica: Equatable {
     var historys: [HistoryDetail]
     
-    struct HistoryDetail {
+    struct HistoryDetail: Equatable {
         var useDate: String
         var balance: Int
     }
