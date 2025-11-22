@@ -14,7 +14,7 @@ import CoreNFC
 struct Main {
     @ObservableState
     struct State: Equatable {
-        
+        var felica: Felica? = nil
     }
     
     enum Action {
@@ -25,7 +25,7 @@ struct Main {
             case readButtonTapped(NFCTagReaderSessionDelegate)
             case readSuccess(NFCTagReaderSession, [NFCTag])
         }
-        
+        case readFelicaResult(Result<Felica, Error>)
         case view(ViewAction)
     }
     
@@ -37,6 +37,14 @@ struct Main {
             switch action {
             case let .view(action):
                 return viewAction(state: &state, action: action)
+                
+            case let .readFelicaResult(.success(result)):
+                state.felica = result
+                print(state.felica ?? "nil")
+                return .none
+                
+            case .readFelicaResult(.failure):
+                return .none
             }
         }
     }
@@ -48,12 +56,15 @@ struct Main {
         case .onLoad:
             return .none
         case let .readButtonTapped(delegate):
-            return .run { _ in
+            return .run { [weak delegate] _ in
+                guard let delegate else { return }
                 await nfcClient.NFCSessionStart(delegate)
             }
+            
         case let .readSuccess(session, tags):
-            return .run { _ in
-                await nfcClient.NFCSessionReaded(session, tags)
+            return .run { send in
+                let result = await nfcClient.NFCSessionReaded(session, tags)
+                await send(.readFelicaResult(result))
             }
         }
     }
