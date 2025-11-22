@@ -10,7 +10,9 @@ import CoreNFC
 
 struct NFCClient {
     var NFCSessionStart: ( _ delegate: NFCTagReaderSessionDelegate) -> Void = { _ in }
-    var NFCSessionReaded: ( _ session: NFCTagReaderSession, _ tags: [NFCTag]) -> Void = { _, _ in }
+    var NFCSessionReaded: (_ session: NFCTagReaderSession, _ tags: [NFCTag]) async -> Result<Felica, Error> = { _, _ in
+        .success(.emptyHistroy)
+    }
 }
 
 extension DependencyValues {

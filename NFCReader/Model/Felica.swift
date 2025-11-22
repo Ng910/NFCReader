@@ -9,7 +9,7 @@ struct Felica{
     var historys: [HistoryDetail]
     
     struct HistoryDetail {
-        var date: String
+        var useDate: String
         var balance: Int
     }
 }
@@ -19,5 +19,5 @@ extension Felica {
 }
 
 extension Felica.HistoryDetail {
-    static let emptyHistroyDetail = Felica.HistoryDetail(date: "", balance: 0)
+    static let emptyHistroyDetail = Felica.HistoryDetail(useDate: "", balance: 0)
 }

@@ -16,53 +16,56 @@ extension NFCClient: DependencyKey {
             session?.alertMessage = "デバイスにカードをかざしてください"
             session?.begin()
         },
-        NFCSessionReaded: { session, tags in
-            guard let tag = tags.first, case let .feliCa(felicaTag) = tag else { return }
+        NFCSessionReaded: { session, tags async -> Result<Felica, Error> in
+            guard let tag = tags.first, case let .feliCa(felicaTag) = tag else {
+                return .success(.emptyHistroy)
+            }
             
-            session.connect(to: tag) { error in
-                if let error = error {
-                    print("Error: ", error)
-                    return
-                }
-                
-                let serviceCode = Data([0x09, 0x0f].reversed())
-                felicaTag.requestService(nodeCodeList: [serviceCode]) { nodes, error in
+            return await withCheckedContinuation { continuation in
+                session.connect(to: tag) { error in
                     if let error = error {
-                        print("Error: ", error)
+                        continuation.resume(returning: .failure(error))
                         return
                     }
                     
-                    guard let data = nodes.first, data != Data([0xff, 0xff]) else {
-                        print("サービスが存在しない")
-                        return
-                    }
-                    
-                    let blockList = (0..<12).map { Data([0x80, UInt8($0)]) }
-                    felicaTag.readWithoutEncryption(serviceCodeList: [serviceCode], blockList: blockList)
-                    { status1, status2, dataList, error in
+                    let serviceCode = Data([0x09, 0x0f].reversed())
+                    felicaTag.requestService(nodeCodeList: [serviceCode]) { nodes, error in
                         if let error = error {
-                            print("Error: ", error)
+                            continuation.resume(returning: .failure(error))
                             return
                         }
-                        guard status1 == 0x00, status2 == 0x00 else {
-                            print("ステータスフラグエラー: ", status1, " / ", status2)
-                            return
-                        }
-                        session.invalidate()
                         
-                        dataList.forEach { data in
-                            let year: String = String(Int(data[4] >> 1) + 2000)
-                            let month: String = String(((data[4] & 1) == 1 ? 8 : 0) + Int(data[5] >> 5))
-                            let day: String = String(Int(data[5] & 0x1f))
+                        guard let data = nodes.first, data != Data([0xff, 0xff]) else {
+                            continuation.resume(returning: .success(.emptyHistroy))
+                            return
+                        }
+                        
+                        let blockList = (0..<12).map { Data([0x80, UInt8($0)]) }
+                        felicaTag.readWithoutEncryption(serviceCodeList: [serviceCode], blockList: blockList)
+                        { status1, status2, dataList, error in
+                            if let error = error {
+                                continuation.resume(returning: .failure(error))
+                                return
+                            }
+                            guard status1 == 0x00, status2 == 0x00 else {
+                                continuation.resume(returning: .failure(
+                                    NSError(domain: "FelicaError", code: Int(status1), userInfo: nil)))
+                                return
+                            }
+                            session.invalidate()
                             
-                            let date: String = year + "/" + month + "/" + day
-                            let balance = Int(data[10]) + Int(data[11]) << 8
-                            print("利用日: ",date)
-                            print("残高: ", balance)
-//                            print("入場駅コード: ", data[6...7].map { String(format: "%02x", $0) }.joined())
-//                            print("出場駅コード: ", data[8...9].map { String(format: "%02x", $0) }.joined())
-//                            print("入場地域コード: ", String(Int(data[15] >> 6), radix: 16))
-//                            print("出場地域コード: ", String(Int((data[15] & 0x30) >> 4), radix: 16))
+                            var felicaHistory = Felica(historys: [])
+                            dataList.forEach { data in
+                                let year: String = String(Int(data[4] >> 1) + 2000)
+                                let month: String = String(((data[4] & 1) == 1 ? 8 : 0) + Int(data[5] >> 5))
+                                let day: String = String(Int(data[5] & 0x1f))
+                                
+                                let useDate: String = year + "/" + month + "/" + day
+                                let balance = Int(data[10]) + Int(data[11]) << 8
+                                let historyDetail = Felica.HistoryDetail(useDate: useDate, balance: balance)
+                                felicaHistory.historys.append(historyDetail)
+                            }
+                            continuation.resume(returning: .success(felicaHistory))
                         }
                     }
                 }
