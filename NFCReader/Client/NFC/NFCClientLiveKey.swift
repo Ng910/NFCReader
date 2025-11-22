@@ -25,8 +25,8 @@ extension NFCClient: DependencyKey {
                     return
                 }
                 
-                let historyServiceCode = Data([0x09, 0x0f].reversed())
-                felicaTag.requestService(nodeCodeList: [historyServiceCode]) { nodes, error in
+                let serviceCode = Data([0x09, 0x0f].reversed())
+                felicaTag.requestService(nodeCodeList: [serviceCode]) { nodes, error in
                     if let error = error {
                         print("Error: ", error)
                         return
@@ -38,7 +38,7 @@ extension NFCClient: DependencyKey {
                     }
                     
                     let blockList = (0..<12).map { Data([0x80, UInt8($0)]) }
-                    felicaTag.readWithoutEncryption(serviceCodeList: [historyServiceCode], blockList: blockList)
+                    felicaTag.readWithoutEncryption(serviceCodeList: [serviceCode], blockList: blockList)
                     { status1, status2, dataList, error in
                         if let error = error {
                             print("Error: ", error)
@@ -51,14 +51,18 @@ extension NFCClient: DependencyKey {
                         session.invalidate()
                         
                         dataList.forEach { data in
-                            print("年: ", Int(data[4] >> 1) + 2000)
-                            print("月: ", ((data[4] & 1) == 1 ? 8 : 0) + Int(data[5] >> 5))
-                            print("日: ", Int(data[5] & 0x1f))
-                            print("入場駅コード: ", data[6...7].map { String(format: "%02x", $0) }.joined())
-                            print("出場駅コード: ", data[8...9].map { String(format: "%02x", $0) }.joined())
+                            let year: String = String(Int(data[4] >> 1) + 2000)
+                            let month: String = String(((data[4] & 1) == 1 ? 8 : 0) + Int(data[5] >> 5))
+                            let day: String = String(Int(data[5] & 0x1f))
+                            
+                            let date: String = year + "/" + month + "/" + day
+                            let balance = Int(data[10]) + Int(data[11]) << 8
+                            print("利用日: ",date)
+                            print("残高: ", balance)
+//                            print("入場駅コード: ", data[6...7].map { String(format: "%02x", $0) }.joined())
+//                            print("出場駅コード: ", data[8...9].map { String(format: "%02x", $0) }.joined())
 //                            print("入場地域コード: ", String(Int(data[15] >> 6), radix: 16))
 //                            print("出場地域コード: ", String(Int((data[15] & 0x30) >> 4), radix: 16))
-                            print("残高: ", Int(data[10]) + Int(data[11]) << 8)
                         }
                     }
                 }
