@@ -16,53 +16,58 @@ extension NFCClient: DependencyKey {
             session?.alertMessage = "デバイスにカードをかざしてください"
             session?.begin()
         },
-        NFCSessionReaded: { session, tags in
+        NFCSessionReaded: { session, tags async -> Result<Felica, Error> in
+            guard let tag = tags.first, case let .feliCa(felicaTag) = tag else {
+                return .success(.emptyHistroy)
+            }
             
-            let tag = tags.first!
-            session.connect(to: tag) { (error) in
-                if let error = error {
-                    session.invalidate(errorMessage: error.localizedDescription)
-                    return
-                }
-                
-                guard case NFCTag.feliCa(let feliCaTag) = tag else {
-                    session.invalidate(errorMessage: "FeliCa ではない")
-                    return
-                }
-                
-                session.alertMessage = "カードを読み取っています…"
-                
-                let idm = feliCaTag.currentIDm.map { String(format: "%.2hhx", $0) }.joined()
-                print("IDm:", idm)
-                
-                /// FeliCa サービスコード
-                let serviceCode = Data([0x00, 0x8B].reversed())
-                
-                /// ブロック数
-                let blocks = 1
-                let blockList = (0..<blocks).map { (block) -> Data in
-                    Data([0x80, UInt8(block)])
-                }
-                
-                feliCaTag.readWithoutEncryption(serviceCodeList: [serviceCode], blockList: blockList) { (status1, status2, blockData, error) in
+            return await withCheckedContinuation { continuation in
+                session.connect(to: tag) { error in
                     if let error = error {
-                        session.invalidate(errorMessage: error.localizedDescription)
+                        continuation.resume(returning: .failure(error))
                         return
                     }
                     
-                    guard status1 == 0x00, status2 == 0x00 else {
-                        print("ステータスフラグがエラーを示しています", status1, status2)
-                        session.invalidate(errorMessage: "ステータスフラグがエラーを示しています s1:\(status1), s2:\(status2)")
-                        return
+                    let serviceCode = Data([0x09, 0x0f].reversed())
+                    felicaTag.requestService(nodeCodeList: [serviceCode]) { nodes, error in
+                        if let error = error {
+                            continuation.resume(returning: .failure(error))
+                            return
+                        }
+                        
+                        guard let data = nodes.first, data != Data([0xff, 0xff]) else {
+                            continuation.resume(returning: .success(.emptyHistroy))
+                            return
+                        }
+                        
+                        let blockList = (0..<12).map { Data([0x80, UInt8($0)]) }
+                        felicaTag.readWithoutEncryption(serviceCodeList: [serviceCode], blockList: blockList)
+                        { status1, status2, dataList, error in
+                            if let error = error {
+                                continuation.resume(returning: .failure(error))
+                                return
+                            }
+                            guard status1 == 0x00, status2 == 0x00 else {
+                                continuation.resume(returning: .failure(
+                                    NSError(domain: "FelicaError", code: Int(status1), userInfo: nil)))
+                                return
+                            }
+                            session.invalidate()
+                            
+                            var felicaHistory = Felica(historys: [])
+                            dataList.forEach { data in
+                                let year: String = String(Int(data[4] >> 1) + 2000)
+                                let month: String = String(((data[4] & 1) == 1 ? 8 : 0) + Int(data[5] >> 5))
+                                let day: String = String(Int(data[5] & 0x1f))
+                                
+                                let useDate: String = year + "/" + month + "/" + day
+                                let balance = Int(data[10]) + Int(data[11]) << 8
+                                let historyDetail = Felica.HistoryDetail(useDate: useDate, balance: balance)
+                                felicaHistory.historys.append(historyDetail)
+                            }
+                            continuation.resume(returning: .success(felicaHistory))
+                        }
                     }
-                    
-                    let data = blockData.first!
-                    let balance = data.toIntReversed(11, 12)
-                    
-                    print(data as NSData)
-                    print("残高: ¥\(balance)")
-                    session.alertMessage = "残高: ¥\(balance)"
-                    session.invalidate()
                 }
             }
         }

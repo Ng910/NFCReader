@@ -9,13 +9,15 @@ import Dependencies
 import CoreNFC
 
 struct NFCClient {
-    var NFCSessionStart: ( _ delegate: NFCTagReaderSessionDelegate) -> Void = { delegate in }
-    var NFCSessionReaded: ( _ session: NFCTagReaderSession, _ tags: [NFCTag] ) -> Void = { session, tags in }
+    var NFCSessionStart: ( _ delegate: NFCTagReaderSessionDelegate) -> Void = { _ in }
+    var NFCSessionReaded: (_ session: NFCTagReaderSession, _ tags: [NFCTag]) async -> Result<Felica, Error> = { _, _ in
+        .success(.emptyHistroy)
+    }
 }
 
 extension DependencyValues {
     var nfcClient: NFCClient {
         get { self[NFCClient.self] }
         set { self[NFCClient.self] = newValue }
-      }
+    }
 }

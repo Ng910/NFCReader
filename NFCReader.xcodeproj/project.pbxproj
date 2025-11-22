@@ -12,6 +12,7 @@
 		11364E012EB7AA1000E7FAFE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11364E002EB7AA0400E7FAFE /* UIColor+Extension.swift */; };
 		11364E052EB7B15700E7FAFE /* NFCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11364E042EB7B15000E7FAFE /* NFCClient.swift */; };
 		11364E072EB7B16C00E7FAFE /* NFCClientLiveKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11364E062EB7B15B00E7FAFE /* NFCClientLiveKey.swift */; };
+		118EB62B2ED1FB100090A632 /* FelicaDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118EB62A2ED1FB080090A632 /* FelicaDetailCell.swift */; };
 		1192FA792EB749EB0046E5AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192FA6F2EB749EB0046E5AD /* AppDelegate.swift */; };
 		1192FA7A2EB749EB0046E5AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1192FA762EB749EB0046E5AD /* SceneDelegate.swift */; };
 		1192FA7C2EB749EB0046E5AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1192FA702EB749EB0046E5AD /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		11364E002EB7AA0400E7FAFE /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		11364E042EB7B15000E7FAFE /* NFCClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCClient.swift; sourceTree = "<group>"; };
 		11364E062EB7B15B00E7FAFE /* NFCClientLiveKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCClientLiveKey.swift; sourceTree = "<group>"; };
+		118EB62A2ED1FB080090A632 /* FelicaDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FelicaDetailCell.swift; sourceTree = "<group>"; };
 		1192FA6F2EB749EB0046E5AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1192FA702EB749EB0046E5AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1192FA712EB749EB0046E5AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -119,6 +121,31 @@
 			path = NFC;
 			sourceTree = "<group>";
 		};
+		118EB6272ED1FAE30090A632 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1192FA832EB74AA90046E5AD /* MainViewController.swift */,
+				118EB6282ED1FAEE0090A632 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		118EB6282ED1FAEE0090A632 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				118EB62A2ED1FB080090A632 /* FelicaDetailCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		118EB6292ED1FAF80090A632 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1192FA8F2EB7829F0046E5AD /* SplashViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		1192FA782EB749EB0046E5AD /* NFCReader */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,7 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				1192FA882EB74D690046E5AD /* SplashStore.swift */,
-				1192FA8F2EB7829F0046E5AD /* SplashViewController.swift */,
+				118EB6292ED1FAF80090A632 /* View */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -157,7 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				1192FA8A2EB74D750046E5AD /* MainStore.swift */,
-				1192FA832EB74AA90046E5AD /* MainViewController.swift */,
+				118EB6272ED1FAE30090A632 /* View */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -353,6 +380,7 @@
 				1192FA892EB74D6F0046E5AD /* SplashStore.swift in Sources */,
 				1192FA792EB749EB0046E5AD /* AppDelegate.swift in Sources */,
 				1192FA872EB74B780046E5AD /* FilledButton.swift in Sources */,
+				118EB62B2ED1FB100090A632 /* FelicaDetailCell.swift in Sources */,
 				11364E052EB7B15700E7FAFE /* NFCClient.swift in Sources */,
 				11E9862C2EB86B71005157E4 /* Felica.swift in Sources */,
 				1192FA8B2EB74D770046E5AD /* MainStore.swift in Sources */,
@@ -411,7 +439,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeRight;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -455,7 +483,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationLandscapeRight;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
